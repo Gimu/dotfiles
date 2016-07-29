@@ -1,0 +1,275 @@
+# i3 config file
+
+####################
+# Global Variables 
+####################
+
+# Paths
+set $i3 "~/.i3"
+set $scripts "~/.i3/scripts"
+set $terminal "urxvt"
+
+# Keys
+set $mod Mod4
+set $alt Mod1
+
+# Workspaces
+set $ws_1 "1"
+set $ws_2 "2"
+set $ws_3 "3"
+set $ws_4 "4"
+set $ws_5 "5"
+set $ws_6 "6"
+set $ws_7 "7"
+set $ws_8 "8"
+set $ws_9 "9"
+set $ws_10 "10"
+
+# Colors
+set $bg #2c3038
+set $bg_light #444752
+set $main_color #2c3038
+set $sub_color #2f343f
+set $sl #d3dae3
+set $red #ce3a3a
+set $focused_txt #f6f6f6
+set $inactive_txt #9d9d9d
+
+# Gaps
+set $gaps_inner 0
+set $gaps_outer 0
+
+# Border
+set $border 1
+
+# Floating windows
+set $floating_windows "^((?i)pavucontrol|Yad)$"
+
+#####################
+# Global Keybindings 
+#####################
+
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+ && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%- && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioMute exec amixer -D pulse sset Master 1+ toggle && pkill -RTMIN+1 i3blocks 
+
+# Mouse
+bindsym --border button2 kill
+bindsym --whole-window $mod+button2 kill
+
+# Exit i3
+set $mode_exit [l]ogout | [s]hutdown | [r]eboot
+bindsym $mod+shift+e mode "$mode_exit"
+mode "$mode_exit" {
+	bindsym l exec i3-msg exit
+	bindsym s exec --no-startup-id sudo $scripts/exit.sh shutdown
+	bindsym r exec --no-startup-id sudo $scripts/exit.sh reboot
+
+	bindsym $mod+shift+e mode "default"
+	bindsym Escape mode "default"
+	bindsym Return mode "default"
+}
+
+bindsym $mod+Return exec $terminal
+
+# Custom mode for launching applications
+set $mode_launcher [w]eb-browser | [m]ail | [f]ile-manager
+bindsym $mod+asterisk mode "$mode_launcher"
+mode "$mode_launcher" {
+	bindsym w exec chromium; mode "default"
+	bindsym m exec exo-open --launch MailReader; mode "default"
+	bindsym f exec exo-open --launch FileManager; mode "default"
+
+	bindsym $mod+Return mode "default"
+	bindsym Escape mode "default"
+	bindsym Return mode "default"
+}
+
+# Custom mode for layouts
+set $mode_layout [s]tacking | [t]abbed | s[p]lit
+bindsym $mod+e mode "$mode_layout"
+mode "$mode_layout" {
+	bindsym s layout stacking; mode "default"
+	bindsym t layout tabbed; mode "default"
+	bindsym p layout toggle split; mode "default"
+
+	bindsym $mod+e mode "default"
+	bindsym Escape mode "default"
+	bindsym Return mode "default"
+}
+
+# Custom mode for initializing workspaces
+#set $mode_init_ws [m]usic
+#bindsym $mod+i mode "$mode_init_ws"
+#mode "$mode_init_ws" {
+#	bindsym m exec --no-startup-id bash $scripts/init_music.sh $ws_10; mode default
+#
+#	bindsym $mod+i mode "default"
+#	bindsym Escape mode "default"
+#	bindsym Return mode "default"
+#}
+
+# xkill
+bindsym --release Control+Shift+Escape exec xkill
+
+# dmenu 
+bindsym $mod+d exec dmenu_run -fn "Inconsolata 11" -nb '#2f343f' -nf '#8f8f8f' -sb '#2c3038' -sf '#e0e0e0' 
+
+# Screen brightness controls
+bindsym XF86MonBrightnessUp exec xbacklight -inc 20
+bindsym XF86MonBrightnessDown exec xbacklight -dec 20
+
+# Kill focused window
+bindsym $alt+F4 kill
+bindsym $mod+c kill
+
+# Change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# Move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# Split in horizontal/vertical orientation
+bindsym $mod+v splith
+bindsym $mod+s splitv
+
+# Fullscreen mode
+bindsym $mod+f fullscreen
+
+# Toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# Reload the configuration file
+bindsym $mod+Shift+c reload
+
+# Restart i3 inplace
+bindsym $mod+Shift+r restart
+
+# Resize window
+set $mode_resize resize
+bindsym $mod+r mode "$mode_resize"
+mode "$mode_resize" {
+	bindsym h resize shrink width 10 px or 10 ppt
+	bindsym j resize grow height 10 px or 10 ppt
+	bindsym k resize shrink height 10 px or 10 ppt
+	bindsym l resize grow width 10 px or 10 ppt
+
+	bindsym $mod+r mode "default"
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+}
+
+# Make the currently focused window a scratchpad
+bindsym $mod+Shift+x move scratchpad
+# Show the first scratchpad window
+bindsym $mod+x scratchpad show
+
+##########
+# WINDOWS
+##########
+
+# Theme
+client.focused          $main_color $main_color $sl $focused_txt $sub_color
+client.focused_inactive $main_color $main_color $inactive_txt $focused_txt $main_color
+client.unfocused        $main_color $main_color $inactive_txt $focused_txt $sub_color
+client.urgent           $red        $red        $sl           $focused_txt $main_color
+client.placeholder      $main_color $main_color $sl           $focused_txt $sl
+client.background       $main_color 
+
+font pango:InconsolataForPowerline NF Medium 11
+
+hide_edge_borders both
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+new_window pixel $border
+mouse_warping none
+
+# Enable floating mode for some windows
+for_window [class=$floating_windows] floating enable
+for_window [window_type="notification"] floating enable; border none;
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="task_dialog"] floating enable
+
+#############
+# WORKSPACES
+#############
+
+# Go back to previous workspace with the same keys
+workspace_auto_back_and_forth no
+
+# Switch to workspace
+bindsym $mod+1 workspace $ws_1
+bindsym $mod+2 workspace $ws_2
+bindsym $mod+3 workspace $ws_3
+bindsym $mod+4 workspace $ws_4
+bindsym $mod+5 workspace $ws_5
+bindsym $mod+6 workspace $ws_6
+bindsym $mod+7 workspace $ws_7
+bindsym $mod+8 workspace $ws_8
+bindsym $mod+9 workspace $ws_9
+bindsym $mod+0 workspace $ws_10
+
+# Move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws_1
+bindsym $mod+Shift+2 move container to workspace $ws_2
+bindsym $mod+Shift+3 move container to workspace $ws_3
+bindsym $mod+Shift+4 move container to workspace $ws_4
+bindsym $mod+Shift+5 move container to workspace $ws_5
+bindsym $mod+Shift+6 move container to workspace $ws_6
+bindsym $mod+Shift+7 move container to workspace $ws_7
+bindsym $mod+Shift+8 move container to workspace $ws_8
+bindsym $mod+Shift+9 move container to workspace $ws_9
+bindsym $mod+Shift+0 move container to workspace $ws_10
+
+########
+# I3BAR
+########
+
+# Hide/show the bar
+bindsym $mod+shift+p bar mode toggle
+
+bar {
+	# Optional: i3bar -t for transparent bar (needs compton)
+	i3bar_command i3bar
+	status_command i3blocks -c ~/.i3/i3blocks.conf
+    height 24
+	colors {
+		background $sub_color
+		statusline "#ffffff"
+		separator $inactive_txt00
+		focused_workspace $bg $bg $focused_txt
+		inactive_workspace $bg $bg $inactive_txt
+		urgent_workspace $red00 $red00 $focused_txt
+	}
+}
+
+#######
+# GAPS
+#######
+
+# Default values:
+gaps inner $gaps_inner
+gaps outer $gaps_outer
+
+# Gaps & borders only when we have more than 1 window
+smart_borders on
+
+##########
+# STARTUP
+##########
+
+# Applications
+exec --no-startup-id clipit
+exec --no-startup-id nm-applet
+
+# Execute terminal on startup
+exec --no-startup-id i3-msg 'workspace $ws_1; exec $terminal'
