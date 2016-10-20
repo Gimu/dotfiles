@@ -268,8 +268,9 @@ smart_borders on
 ##########
 
 # Applications
+exec --no-startup-id fcitx 
 exec --no-startup-id clipit
 exec --no-startup-id nm-applet
 
 # Execute terminal on startup
-exec --no-startup-id i3-msg 'workspace $ws_1; exec $terminal'
+#exec --no-startup-id i3-msg 'workspace $ws_1; exec $terminal'
