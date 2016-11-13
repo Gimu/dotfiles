@@ -30,6 +30,7 @@ Plugin 'lervag/vimtex'
 Plugin 'xuhdev/vim-latex-live-preview'
 
 Plugin 'derekwyatt/vim-scala'
+Plugin 'derekwyatt/vim-twig'
 
 "set statusline+=%#warningmsg#
 "set statusline+=%{SyntasticStatuslineFlag()}
