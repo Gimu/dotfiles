@@ -30,6 +30,8 @@ Stow will create symlinks for files in the parent directory from where you execu
 Installing emacs configurations: `$ stow emacs`.                     
 Uninstalling emacs configurations: `$ stow -D emacs`.
 
+#### Other directories
+Use `$ stow -t destination_folder` to symlink configurations that are not stored in the home folder.
 
 ## Requirements
 This setup uses [i3-gaps](https://github.com/Airblader/i3) and [i3blocks-gaps](https://github.com/Airblader/i3blocks-gaps). Additionally the ```yad``` package has to be installed for the bar to work.
