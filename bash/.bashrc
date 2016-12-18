@@ -10,6 +10,13 @@ alias javacjh='javac -cp .:/usr/share/java/junit4.jar:/usr/share/java/hamcrest-c
 alias javajh='java -cp .:/usr/share/java/junit4.jar:/usr/share/java/hamcrest-core.jar'
 alias scalacjf='scalac -cp .:/usr/lib/jvm/java-8-openjdk/jre/lib/ext/jfxrt.jar'
 alias scalajf='scala -cp .:/usr/lib/jvm/java-8-openjdk/jre/lib/ext/jfxrt.jar'
+
+# Force confirmation
+alias mv='mv -i' 
+alias cp='cp -i' 
+alias ln='ln -i'
+alias rm='rm -i'
+
 PS1='[\u@\h \W]\$ '
 
 FIGNORE=.class
