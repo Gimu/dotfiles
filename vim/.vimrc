@@ -1,8 +1,23 @@
+" Enable filetype plugins
+filetype plugin on
+filetype indent on
+
+" Encoding
+set encoding=utf8
+set ffs=unix,dos,mac
+
+" Set auto read when file is changed from outside
+set autoread
+
+" Syntax stuff
 syntax on
 set nocompatible
-filetype off
 set number
 hi LineNr term=NONE
+
+" Search highlight
+:set incsearch 
+:set hlsearch
 
 " Indentation
 set tabstop=4
