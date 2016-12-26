@@ -1,5 +1,5 @@
-dotfiles (2016+)
-================
+dotfiles
+========
 
 The old configuration can be found [here](https://github.com/gimu/dotfiles-legacy).                                               
 This repository is aimed to work on Arch Linux (with a few tweaks probably on another distribution too).
@@ -8,13 +8,11 @@ This repository is aimed to work on Arch Linux (with a few tweaks probably on an
 
 
 ## Installation
-Full installation with backup and packages:
+Full installation with backup and packages (Arch Linux):
 
 ```
 $ ./setup.sh
 ```
-
-Partial installation of configurations: Read the [partial installation guide]().
 
 ### Requirements
 [Stow](https://www.gnu.org/software/stow/manual/stow.html) should be available via your package manager.
@@ -36,4 +34,4 @@ Uninstalling emacs configurations: `$ stow -D emacs`.
 Use `$ stow -t destination_folder` to symlink configurations that are not stored in the home folder.
 
 ## Requirements
-This setup uses [i3-gaps](https://github.com/Airblader/i3) and [i3blocks-gaps](https://github.com/Airblader/i3blocks-gaps). Additionally the ```yad``` package has to be installed for the bar to work.
+This setup uses [i3-gaps](https://github.com/Airblader/i3) and [polybar](https://github.com/jaagr/polybar).
