@@ -1,9 +1,11 @@
 dotfiles (2016+)
 ================
 
-The legacy configuration is available [here](https://github.com/gimu/dotfiles-legacy).
+The old configuration can be found [here](https://github.com/gimu/dotfiles-legacy).                                               
+This repository is aimed to work on Arch Linux (with a few tweaks probably on another distribution too).
 
-This repository is aimed to work with Arch Linux (with a few tweaks probably on another distribution too).
+![Juicy Preview](https://raw.githubusercontent.com/gimu/dotfiles/master/preview.jpg)
+
 
 ## Installation
 Full installation with backup and packages:
