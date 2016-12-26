@@ -234,3 +234,5 @@ bar {
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id dunst
 exec --no-startup-id compton
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+
