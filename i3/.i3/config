@@ -120,8 +120,8 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
 # Application and workspace binding
-assign [class="Firefox"] $ws1
-assign [class="Chromium"] $ws1
+#assign [class="Firefox"] $ws1
+#assign [class="Chromium"] $ws1
 assign [class="Steam"] $ws4
 
 # Reload i3 configuration
