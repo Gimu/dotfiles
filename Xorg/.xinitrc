@@ -5,10 +5,8 @@
 setxkbmap de
 xbindkeys
 
-#compton -b
-
 # Wallpaper
-feh --bg-fill ~/Wallpaper/tux.jpg
+feh --bg-fill ~/Wallpaper/green-forest.jpg
 
 # UIM
 export GTK_IM_MODULE='uim'
