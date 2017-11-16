@@ -6,7 +6,7 @@ setxkbmap de
 xbindkeys
 
 # Wallpaper
-feh --bg-fill ~/Wallpaper/green-forest.jpg
+feh --bg-fill ~/Wallpaper/dark_gradient.jpg
 
 # UIM
 export GTK_IM_MODULE='uim'

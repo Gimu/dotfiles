@@ -14,6 +14,8 @@ HISTFILESIZE=2000
 shopt -s checkwinsize
 
 # Aliases
+alias wifi='nmtui-connect'
+
 alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CF'
@@ -45,5 +47,5 @@ PS1='[\u@\h \W]\$ '
 FIGNORE=.class
 
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
-
+export TERM='xterm-256color'
 
